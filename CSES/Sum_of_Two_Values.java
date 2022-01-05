@@ -1,34 +1,33 @@
 import java.util.*;
 import java.io.*;
 
-public class Sum_of_Two_Values {
+public class sum_of_two_values {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		int numbers = Integer.parseInt(st.nextToken());
-		int target = Integer.parseInt(st.nextToken());
+        int len = Integer.parseInt(st.nextToken());
+        int goal = Integer.parseInt(st.nextToken());
 
-		HashMap<Integer,Integer> nums = new HashMap<>();
-		int count = 0;
-		
-		int num = 0;
-		for(int x = 0; x < numbers; x++) {
-			num = Integer.parseInt(st.nextToken());
-			
-			if(nums.keySet().contains(target-num)) {
-				System.out.println(x + " "+nums.get(target - num));
-				count ++;
-			}
-			else {
-				nums.put(num, x);
-			}
-		}
-		if(count == 0) {
-			System.out.println("IMPOSSIBLE");
-		}
-	}
+        HashMap<Integer, Integer> nums = new HashMap<>();
 
+        st = new StringTokenizer(br.readLine());
+        int num;
+
+        for (int x = 0; x < len; x++) {
+            num = Integer.parseInt(st.nextToken());
+
+            if (nums.containsKey(goal - num)) {
+                System.out.println(
+                        Math.min(x + 1, nums.get(goal - num) + 1) + " " + Math.max(x + 1, nums.get(goal - num) + 1));
+                break;
+            } else {
+                nums.put(num, x);
+            }
+
+            if (x == len - 1) {
+                System.out.println("IMPOSSIBLE");
+            }
+        }
+    }
 }
