@@ -1,43 +1,61 @@
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
+import java.io.*;
 
-public class Concert_Tickets {
-	public static void main(String args[]) {
-		Scanner sc1 = new Scanner(System.in);
-		int[] max = null;
-		TreeMap<Integer,Integer> prices = new TreeMap<>();
-		
-		int tickets = sc1.nextInt();
-		int customers = sc1.nextInt();
-		max = new int[customers];
-		
-		for(int x = 0; x < tickets;x++) {
-			int num = sc1.nextInt();
-			if(prices.containsKey(num)) {
-				prices.put(num, prices.get(num) + 1);
-			}
-			else {
-				prices.put(num, 1);
-			}
-		}
-		for(int x = 0; x < customers;x++) {
-			max[x] = sc1.nextInt();
-		}
-		
-		for(int x:max) {
-			if(prices.lowerKey(x+1) != null) {
-				int number = prices.lowerKey((x + 1));
-				
-				System.out.println(number);
-				prices.put(number, prices.get(number) - 1);
-				
-				if(prices.get(number) == 0) {
-					prices.remove(number);
-				}
-			}
-			else {
-				System.out.println(-1);
-			}
-		}
-	}
+public class concert_tickets {
+    public static void main(String[] args) throws IOException {
+        /*
+         * Hash VS Tree
+         * 
+         * Tree Set/Map: Sortedness, log(n) for insertion, lookup, deletion
+         * 
+         * Hash Set/Map: Not sorted, O(1) for insertion, lookup, deletion
+         */
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int tickets = Integer.parseInt(st.nextToken());
+        int customers = Integer.parseInt(st.nextToken());
+
+        HashMap<Integer, Integer> prices = new HashMap<>();
+        TreeSet<Integer> prices2 = new TreeSet<>();
+        prices.put(-1, 0);
+        prices.put(10 ^ 9 + 1, 0);
+
+        st = new StringTokenizer(br.readLine());
+
+        int price;
+        for (int x = 0; x < tickets; x++) {
+            price = Integer.parseInt(st.nextToken());
+            prices2.add(price);
+
+            if (prices.containsKey(price)) {
+                prices.put(price, prices.get(price) + 1);
+            }
+
+            else {
+                prices.put(price, 1);
+            }
+        }
+        // System.out.println(prices);
+
+        st = new StringTokenizer(br.readLine());
+
+        int customerPrice;
+        for (int x = 0; x < customers; x++) {
+            customerPrice = prices2.floor(Integer.parseInt(st.nextToken()));
+
+            if (customerPrice == (10 ^ 9 + 1) || customerPrice == -1) {
+                System.out.println(-1);
+            } else {
+                System.out.println(customerPrice);
+
+                if (prices.get(customerPrice) == 1) {
+                    prices.remove(customerPrice);
+                } else {
+                    prices.put(customerPrice, prices.get(customerPrice) - 1);
+                }
+            }
+        }
+
+    }
 }

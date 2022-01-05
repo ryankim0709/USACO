@@ -1,130 +1,88 @@
-import java.util.Arrays;
-import java.io.FileWriter;
-import java.util.Comparator;
-import java.util.Scanner;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
+import java.io.*;
 
-public class Milk_Measurement {
-	public static void main(String args[])  {
-		Scanner sc1;
-		String[][] input = null;
-		int length = 0;
-		int[] Bessie_Elsie_Mildred = {7,7,7};
-		ArrayList<String> displayed = new ArrayList<>();
-		FileWriter output;
-		try {
-			output = new FileWriter("/Users/youjungkim/DropBox/ryankim/usaco/measurement.out");
-			sc1 = new Scanner(new File("/Users/youjungkim/DropBox/ryankim/usaco/measurement.in"));
-			length = sc1.nextInt();
-			input = new String[length][3];
-			
-			for (int x = 0; x < length;x++) {
-				sc1.nextLine();
-				input[x][0] = sc1.next();
-				input[x][1] = sc1.next();
-				input[x][2] = sc1.next();
-			}
-		
-			Arrays.sort(input, Comparator.comparingDouble(o -> Integer.parseInt(o[0])));
-		
-			int change = 0;
-		
-			for(int x = 0; x < length; x++) {
-				switch(input[x][1]) {
-			
-				case "Bessie":
-					if(add_milk(x,Bessie_Elsie_Mildred,input,0,displayed)) {
-						change ++;
-					}
-					break;
-			
-				case "Elsie":
-					if(add_milk(x,Bessie_Elsie_Mildred,input,1,displayed)) {
-						change ++;
-					}
-					break;
-				
-				case "Mildred":
-					if(add_milk(x,Bessie_Elsie_Mildred,input,2,displayed)) {
-						change++;
-					}
-					break;
-				}
-			}
-			System.out.println("change" + change);
-			output.write(change);
-			output.close();
-		}
-		catch(Exception e) {
-			e.getStackTrace();
-		}
-}
-	
-	public static boolean add_milk(int index, int[] Bessie_Elsie_Mildred, String[][] input, int cow,ArrayList<String> displayed) {
-		switch(input[index][2].charAt(0)) {
-		case '+':
-			Bessie_Elsie_Mildred[cow] += Integer.parseInt(input[index][2].substring(1,2));
-			if (update_display(displayed,Bessie_Elsie_Mildred)) {
-				return true;
-			}
-			break;
-			
-		case '-':
-			Bessie_Elsie_Mildred[cow] -= Integer.parseInt(input[index][2].substring(1,2));
-			if (update_display(displayed,Bessie_Elsie_Mildred)) {
-				return true;
-			}
-			break;
-		}
-		return false;
-	}
-	public static boolean update_display(ArrayList<String> displayed, int[] milks) {
-		ArrayList<String> changed = new ArrayList<String>();
-		int max = find_max(milks);
-		
-		if (milks[0] == max) {
-			changed.add("Bessie");
-		}
-		if (milks[1] == max) {
-			changed.add("Elsie");
-		}
-		if (milks[2] == max) {
-			changed.add("Mildred");
-		}
-		if (check(displayed,changed)) {
-			return false;
-		}
-		displayed.clear();
-		
-		for (String a:changed) {
-			displayed.add(a);
-		}
-		
-		return true;
-	}
-	
-	public static boolean check(ArrayList<String> current_display, ArrayList<String> changed) {
-		
-		if (current_display.size() != changed.size()) {
-			return false;
-		}
-		
-		for (int x = 0; x < changed.size();x++) {
-			if(!(current_display.get(x).equals(changed.get(x)))) {
-				return false;
-			}
-		}
-		return true;
-	}
-	public static int find_max(int[] milks) {
-		int max = 0;
-		for (int a:milks) {
-			if (a > max) {
-				max = a;
-			}
-		}
-		return max;
-	}
+public class milk_measurement {
+    static class Entry implements Comparable<Entry> {
+        int date, cow, diff;
+
+        public Entry(int date, int cow, int diff) {
+            this.date = date;
+            this.cow = cow;
+            this.diff = diff;
+        }
+
+        public int compareTo(Entry a) {
+            return this.date - a.date;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new FileReader("measurement.in"));
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("measurement.out")));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int G = Integer.parseInt(st.nextToken());
+
+        Entry[] log = new Entry[N];
+
+        for (int x = 0; x < N; x++) {
+            st = new StringTokenizer(br.readLine());
+            log[x] = new Entry(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()),
+                    Integer.parseInt(st.nextToken()));
+        }
+        br.close();
+        Arrays.sort(log);
+        HashMap<Integer, Integer> production = new HashMap<>();
+        TreeMap<Integer, Integer> finalProduction = new TreeMap<>();
+        finalProduction.put(G, (int) (1e9));
+
+        int switches = 0;
+
+        for (int x = 0; x < N; x++) {
+            Entry a = log[x];
+
+            if (!production.containsKey(a.cow)) {
+                production.put(a.cow, G);
+            }
+
+            int prev_val = production.get(a.cow);
+            production.put(a.cow, prev_val + a.diff);
+            int new_val = production.get(a.cow);
+
+            int old_max = finalProduction.lastKey();
+            if (new_val > prev_val) {
+                if (prev_val == old_max && finalProduction.get(old_max) != 1) {
+                    switches++;
+                }
+                if (prev_val != old_max && new_val >= old_max) {
+                    switches++;
+                }
+            } else { // new_val < prev_val
+                if (prev_val == old_max && finalProduction.get(old_max) == 1) {
+                    int new_max = Math.max(new_val, finalProduction.lowerKey(old_max));
+                    if (new_val < new_max)
+                        switches++;
+                    else {
+                        if (finalProduction.containsKey(new_max))
+                            switches++;
+                    }
+                }
+                if (prev_val == old_max && finalProduction.get(old_max) != 1) {
+                    switches++;
+                }
+            }
+            finalProduction.put(prev_val, finalProduction.get(prev_val) - 1);
+            if (finalProduction.get(prev_val) == 0) {
+                finalProduction.remove(prev_val);
+            }
+
+            finalProduction.putIfAbsent(new_val, 0);
+            finalProduction.put(new_val, finalProduction.get(new_val) + 1);
+        }
+        // System.out.println(switches);
+        pw.print(switches);
+        pw.close();
+    }
 }
