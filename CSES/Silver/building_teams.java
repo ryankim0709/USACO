@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-class Main {
+class building_teams {
     static HashMap<Integer, HashSet<Integer>> graph = new HashMap<>();
     static int[] ans;
     static boolean imposs = false;
@@ -33,14 +33,8 @@ class Main {
                 dfs(x, 1, 0);
             }
         }
-        if (imposs) {
-            System.out.println("IMPOSSIBLE");
-        }
-
-        else {
-            for (int x = 1; x <= n; x++) {
-                System.out.print(ans[x] + " ");
-            }
+        for (int x = 1; x <= n; x++) {
+            System.out.print(ans[x] + " ");
         }
     }
 
@@ -49,10 +43,7 @@ class Main {
             imposs = true;
             return;
         }
-        if (ans[current] != 0 && ans[current] != currentAns) {
-            imposs = true;
-            return;
-        }
+
         if (ans[current] != 0) {
             return;
         }
@@ -63,10 +54,10 @@ class Main {
 
         for (int x : graph.get(current)) {
             int next = 0;
-            if (currentAns == 2)
-                next = 1;
-            else
+            if (currentAns == 1)
                 next = 2;
+            else
+                next = 1;
             dfs(x, next, currentAns);
         }
     }
