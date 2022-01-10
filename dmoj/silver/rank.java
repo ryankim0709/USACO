@@ -2,9 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class rank {
-    static HashMap<Integer, HashSet<Integer>> graph = new HashMap<>();
-    // Key is to make sure graph is not bidirectional
     // Key is winner and Value is loser
+    static HashMap<Integer, HashSet<Integer>> graph = new HashMap<>();
     static int ans = 0;
     static HashSet<Integer> visited = new HashSet<>();
     static boolean cyclic = false;
