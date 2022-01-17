@@ -2,12 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class rank {
-<<<<<<< HEAD
-=======
     static Map<Integer, Set<Integer>> graph = new HashMap<>();
->>>>>>> 5fe014103c4a5077641a9c9188842f6d51f4df3c
     // Key is winner and Value is loser
-    static HashMap<Integer, HashSet<Integer>> graph = new HashMap<>();
     static int ans = 0;
     static Set<Integer> visited = new HashSet<>();
     static boolean cyclic = false;
