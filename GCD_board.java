@@ -9,7 +9,11 @@ public class GCD_board {
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
 
+<<<<<<< HEAD
         int[] orig = new int[maxN];
+=======
+        int[] orig = new int[N + 1];
+>>>>>>> d285738 (smallest string concatenation)
         for (int x = 1; x <= N; x++) {
             orig[x] = Integer.parseInt(st.nextToken());
         }
@@ -37,9 +41,13 @@ public class GCD_board {
     }
 
     public static int GCD(int num1, int num2) {
+<<<<<<< HEAD
         if (num2 != 0) {
             return GCD(num2, num1 % num2);
         }
         return num1;
+=======
+        return num2 != 0 ? GCD(num2, num1 % num2) : num1;
+>>>>>>> d285738 (smallest string concatenation)
     }
 }
