@@ -2,52 +2,43 @@ import java.util.*;
 import java.io.*;
 
 public class GCD_board {
-    static final int maxN = 100000 + 5;
+    static final int MAX_N = (int) 1e5 + 5;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-<<<<<<< HEAD
-        int[] orig = new int[maxN];
-=======
-        int[] orig = new int[N + 1];
->>>>>>> d285738 (smallest string concatenation)
+        int[] arr = new int[N + 1];
         for (int x = 1; x <= N; x++) {
-            orig[x] = Integer.parseInt(st.nextToken());
+            arr[x] = Integer.parseInt(st.nextToken());
         }
 
-        int[] prefix = new int[maxN];
-        int[] suffix = new int[maxN];
-
-        prefix[0] = 0;
-        suffix[N + 1] = 0;
-
+        int[] gcdPrefix = new int[MAX_N];
+        int[] gcdSuffix = new int[MAX_N];
         for (int x = 1; x <= N; ++x) {
-            prefix[x] = GCD(prefix[x - 1], orig[x]);
+            gcdPrefix[x] = gcd(gcdPrefix[x - 1], arr[x]);
         }
         for (int x = N; x >= 1; --x) {
-            suffix[x] = GCD(suffix[x + 1], orig[x]);
+            // GCD for suffix
+            gcdSuffix[x] = gcd(gcdSuffix[x + 1], arr[x]);
         }
 
         int ans = 1;
-
+        // We are going to remove the element at index x
         for (int x = 1; x <= N; ++x) {
-            ans = Math.max(ans, GCD(prefix[x - 1], suffix[x + 1]));
+            /*
+             * Removing the element at index x is the same as finding the GCD from 0 to x -
+             * 1
+             * and the GCD from x + 1 to n - 1
+             */
+            ans = Math.max(ans, gcd(gcdPrefix[x - 1], gcdSuffix[x + 1]));
         }
-
         System.out.println(ans);
     }
 
-    public static int GCD(int num1, int num2) {
-<<<<<<< HEAD
-        if (num2 != 0) {
-            return GCD(num2, num1 % num2);
-        }
-        return num1;
-=======
-        return num2 != 0 ? GCD(num2, num1 % num2) : num1;
->>>>>>> d285738 (smallest string concatenation)
+    public static int gcd(int num1, int num2) {
+        // How to quickly find GCD
+        return num2 != 0 ? gcd(num2, num1 % num2) : num1;
     }
 }
