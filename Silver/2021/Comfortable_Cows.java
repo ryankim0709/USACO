@@ -2,6 +2,9 @@ import java.util.*;
 import java.io.*;
 
 public class Comfortable_Cows {
+    /*
+        Partially done. 3/10 test cases do not pass :()
+    */
     static class Cow {
         int x, y;
 
