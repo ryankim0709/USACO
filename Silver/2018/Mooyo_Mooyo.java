@@ -41,7 +41,9 @@ public class Mooyo_Mooyo {
 
     static int N;
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new FileReader("mooyomooyo.in"));
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("mooyomooyo.out")));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
@@ -53,6 +55,7 @@ public class Mooyo_Mooyo {
                 graph[i][j] = Character.getNumericValue(line.charAt(j));
             }
         }
+        br.close();
 
         boolean valid = true;
 
@@ -77,33 +80,41 @@ public class Mooyo_Mooyo {
                     }
                 }
             }
+            if (!valid) {
+                break;
+            }
             // Gravity
-            for (int i = 0; i < N; i++) { // Column
-                // Two pointer
-                int p1 = N - 1; // Bottom
-                int p2 = N - 2; // Top
+            for (int i = 0; i < 10; i++) { // Column
+            // Two pointer
+            int p1 = N - 1; // Bottom
+            int p2 = N - 2; // Top
 
-                while (p1 != -1) {
-                    if (p2 == 0) {
-                        graph[p1][i] = 0;
-                        p1--;
-                    } else if (graph[p2][i] > 0) { // Works!
-                        graph[p1][i] = graph[p2][i];
-                        graph[p2][i] = 0;
-                        p1--;
-                    } else {
-                        p2--;
-                    }
+            while (p1 != 0) {
+                if (p1 <= p2) {
+                    p2 = p1 - 1;
+                } else if (graph[p1][i] > 0) {
+                    p1--;
+                } else if (p2 <= 0) {
+                    graph[p1][i] = graph[0][i];
+                    graph[0][i] = 0;
+                    p1--;
+                } else if (graph[p2][i] > 0) { // Works!
+                    graph[p1][i] = graph[p2][i];
+                    graph[p2][i] = 0;
+                    p1--;
+                } else {
+                    p2--;
                 }
             }
         }
-        for (int i = 0; i < N; i++) {
-            System.out.println();
-            for (int j = 0; j < 10; j++) {
-                System.out.print(graph[i][j]);
-            }
         }
-        System.out.println();
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < 10; j++) {
+                pw.print(graph[i][j]);
+            }
+            pw.println();
+        }
+        pw.close();
     }
     
     public static void flood(int color, int x, int y) {
