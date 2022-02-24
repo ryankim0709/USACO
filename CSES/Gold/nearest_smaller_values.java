@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class nearest_smaller_values {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
@@ -17,7 +17,7 @@ public class Main {
 
         for (int i = 1; i <= N; i++) {
             int valToBeat = vals[i];
-            while (vals[stk.peek()] >= valToBeat) {
+            while (vals[stk.peek()] > valToBeat) {
                 stk.pop();
             }
             System.out.print(stk.peek() + " ");
