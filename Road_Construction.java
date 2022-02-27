@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class Road_Construction {
     static int[] parents;
     static HashMap<Integer, Integer> info = new HashMap<>();
     static int max = 0;
