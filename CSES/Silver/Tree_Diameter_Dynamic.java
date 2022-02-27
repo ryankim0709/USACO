@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Main {
+public class Tree_Diameter_Dynamic {
     static HashMap<Integer, HashSet<Integer>> tree = new HashMap<>();
     static int ans = 0;
     static int[] counts;
@@ -17,32 +17,28 @@ public class Main {
             int y = Integer.parseInt(st.nextToken());
 
             tree.putIfAbsent(x, new HashSet<>());
-            tree.putIfAbsent(y, new HashSet<>());
 
             tree.get(x).add(y);
-            tree.get(y).add(x);
         }
         //System.out.println(tree);
-        dfs(1, 0);
+        dfs(1);
         // for (int i : counts) {
         //     System.out.println(i);
         // }
-        dfsans(1, 0);
+        dfsans(1);
         System.out.println(ans);
     }
     
-    public static void dfs(int curr, int prev) {
+    public static void dfs(int curr) {
         tree.putIfAbsent(curr, new HashSet<>());
 
         for (int i : tree.get(curr)) {
-            if(i != prev) {
-                dfs(i, curr);
-                counts[curr] = Math.max(counts[curr], counts[i] + 1);
-            }
+            dfs(i);
+            counts[curr] = Math.max(counts[curr], counts[i] + 1);
         }
     }
 
-    public static void dfsans(int curr, int prev) {
+    public static void dfsans(int curr) {
         int[] greatest = new int[2];
         for (int i : tree.get(curr)) {
             if (counts[i] > greatest[0]) {
@@ -54,9 +50,7 @@ public class Main {
         ans = Math.max(ans, greatest[0] + greatest[1] + 2);
 
         for (int i : tree.get(curr)) {
-            if (i != prev) {
-                dfsans(i, curr);
-            }
+            dfsans(i);
         }
     }
 }
