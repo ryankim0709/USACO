@@ -2,17 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
+      "type": "java",
+      "name": "Launch hello",
+      "request": "launch",
+      "mainClass": "hello",
+      "projectName": "USACO_4d0c0883"
+    },
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "USACO_4d0c0883"
+    },
+    {
+      "name": "clang++ - Build and debug active file",
       "type": "cppdbg",
       "request": "launch",
+      "program": "${fileDirname}/hello",
       "args": [],
       "stopAtEntry": true,
       "cwd": "${workspaceFolder}",
       "environment": [],
-      "program": "${fileDirname}/${fileBasenameNoExtention}",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "lldb",
-      "externalConsole": true
+      "externalConsole": false,
+      "preLaunchTask": "C/C++: clang++ build active file"
     }
   ]
 }

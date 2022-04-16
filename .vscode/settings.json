@@ -1,5 +1,5 @@
 {
-  "java.project.sourcePaths": ["Other Algorithms", ""],
+  "java.project.sourcePaths": [""],
   "C_Cpp_Runner.cCompilerPath": "/usr/bin/clang",
   "C_Cpp_Runner.cppCompilerPath": "/usr/bin/clang++",
   "C_Cpp_Runner.debuggerPath": "/usr/bin/lldb",
