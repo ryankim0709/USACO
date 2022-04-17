@@ -1,0 +1,10 @@
+{
+  "folders": [
+    {
+      "path": "programs"
+    }
+  ],
+  "settings": {
+    "java.project.sourcePaths": ["Silver/2022", ""]
+  }
+}
