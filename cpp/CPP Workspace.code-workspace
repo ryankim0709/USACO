@@ -1,7 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "Programs"
-		}
-	]
+  "folders": [
+    {
+      "path": "Programs"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "iostream": "cpp",
+      "array": "cpp",
+      "random": "cpp"
+    }
+  }
 }
