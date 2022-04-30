@@ -84,6 +84,6 @@ int main() {
     cout << pq.top() << "\n"; // 6
     pq.pop();
 
-    // If you want it to be increasing order
+    // If you want a priority queue to be increasing order
     priority_queue<int, vector<int>, greater<int>> pga; // Priority Queue Ascending
 }
