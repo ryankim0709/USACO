@@ -19,6 +19,7 @@ int main() {
     // Type Def
     long long a = 123456789;
     ll b = 123456789;
+    cout << a << " " << b << "\n";
     // These are the same thing because I defined long long as "ll"
 
     // More complex typedef & simple Macros
