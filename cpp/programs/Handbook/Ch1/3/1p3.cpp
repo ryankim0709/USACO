@@ -41,7 +41,8 @@ int main() {
     long double longDoub = 0.123123123123123123123; // Long doubles are 80 bits long. More precise
 
     // You can format your output using printf
-    doub = 0.3 * 3 + 0.1 printf("%.9f\n", doub); // Print the first 9 decimals
+    doub = 0.3 * 3 + 0.1;  
+    printf("%.9f\n", doub); // Print the first 9 decimals
     printf("%20f\n", doub); // As you can see, there are some rounding errors
 
     // To avoid these round errors, == is risky, use this instead
