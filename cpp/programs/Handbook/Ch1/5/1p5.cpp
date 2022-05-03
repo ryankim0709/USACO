@@ -3,8 +3,15 @@
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
 
+    int a[] = {1, 2, 3, 4};
+    int b[] = {2, 3, 4, 5};
+    int n = sizeof(a) / sizeof(a[0]);
+    vector<int> unionResult;
+
+    set_union(a, a + n, b, b + n, unionResult.begin());
     
+    // for(auto i:unionResult) {
+    //     cout << i << "\n";
+    // }
 }
