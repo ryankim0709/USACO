@@ -8,7 +8,10 @@
     "files.associations": {
       "iostream": "cpp",
       "array": "cpp",
-      "random": "cpp"
+      "random": "cpp",
+      "regex": "cpp",
+      "span": "cpp",
+      "type_traits": "cpp"
     }
   }
 }

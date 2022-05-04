@@ -11,7 +11,7 @@ void printArr(array<int, N> s) {
     cout << "\n";
 }
 
-void printArray(int *arr, int len) {
+void printArray(int *arr, int len) { //int* means a variable which contains only integers
    
     for (int i = 0; i < len; i++)
     {
