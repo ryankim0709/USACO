@@ -69,4 +69,20 @@ int main() {
     for(auto i:vectSetUnionSorted) {
         cout << i << "\n";
     }
+
+    // Different Functions
+    double floatingnumber = 125.192832; // Doubles are 8 bytes and floats are 4 bytes
+    cout << floor(floatingnumber) << "\n"; // Prints the greatest integer less than that number
+    cout << ceil(floatingnumber) << "\n"; // Prints the greatest integer greater than that number
+    double secondnumber = 123.192342;
+    cout << min(floatingnumber, secondnumber) << "\n"; // Prints the minimum of the two values
+    cout << max(floatingnumber, secondnumber) << "\n"; // Prints the greater of the two values
+    cout << sqrt(floatingnumber) << "\n"; // Prints the square root of the given value
+    cout << log(floatingnumber) << "\n"
+         << log10(floatingnumber) << "\n"; 
+    // Log will return the natural log, while log10 will return the base 10 log
+    // For logs of base b, use the change of base formula
+
+    cout << "log base b of a = log(a)/log(b)"
+         << "\n";
 }
