@@ -11,7 +11,8 @@
       "random": "cpp",
       "regex": "cpp",
       "span": "cpp",
-      "type_traits": "cpp"
+      "type_traits": "cpp",
+      "tuple": "cpp"
     }
   }
 }
