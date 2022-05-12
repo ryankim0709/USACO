@@ -12,7 +12,9 @@
       "regex": "cpp",
       "span": "cpp",
       "type_traits": "cpp",
-      "tuple": "cpp"
+      "tuple": "cpp",
+      "typeindex": "cpp",
+      "typeinfo": "cpp"
     }
   }
 }
