@@ -1,4 +1,4 @@
-# Bookkeeping To Sort
+# Counting sort
 
 Another way of "sorting" a list is using a map or bookkeep. We will store all of the values in a map and the number of times they occur. Then, since C++ maps auto sort themselves in ```O(nlog(n))``` time, thus this algorithm is in ```O(nlog(n))``` time. This can still be improved. If we use a list such that the values at index ```i``` is the **number of occurences**, then our algorithm is in ```O(n)``` time.
 
