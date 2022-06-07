@@ -100,8 +100,8 @@ int main()
     Name kinga = {"Kinga", "Czajkowska"};
 
     ducklings.push_back(ryan);
-    ducklings.push_back(romy);
     ducklings.push_back(kinga);
+    ducklings.push_back(romy);
     ducklings.push_back(august);
     sort(ducklings.begin(), ducklings.end()); // Soring my struct with my method
 
