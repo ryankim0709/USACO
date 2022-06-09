@@ -1,3 +1,3 @@
-# Chapter 4 in Competitive Programmer's Handbook. Data Structures
+# Competitive Programming Handbook
 
-4/17/22
+In this chapter, I learned about the various data structures in C++.

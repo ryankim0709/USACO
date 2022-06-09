@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-    // Set is like HashSet
-    // unordered_set is like TreeSet
+    // Set is like TreeSet
+    // unordered_set is like HashSet
 
     set<int> s;
     s.insert(3);
