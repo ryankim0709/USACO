@@ -1,3 +1,5 @@
+// To minimize the sum, the greedy algorithm is to use the median to set all of the sticks
+
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
