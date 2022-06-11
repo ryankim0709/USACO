@@ -1,3 +1,5 @@
+// This algorithm gives the customer who needs the greatest space a room and goes down.
+
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
