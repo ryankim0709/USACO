@@ -35,7 +35,7 @@ int solve(int x) {
 ```
 
 ## Using memoization
-Even with our efficient recursive function, our algorithm is too slow. This is becausee there may be an exponential number of ways to construct all sums. To solve this problem, we can use *memoization*. In memoization we keep track of past answers to subproblems.
+Even with our efficient recursive function, our algorithm is too slow. This is becausee there may be an exponential number of ways to construct all sums. To solve this problem, we can use *memoization*. During memoization we keep track of past answers to subproblems.
 ```cpp
 bool ready[N]; // Has solve(x) been calculated?
 bool value[N]; // Values of solve(x)
