@@ -11,28 +11,40 @@ int main() {
     int N;
     cin >> N;
 
-    vector<ll> cows;
+    map<ll, ll> input;
+    ll occurences[N];
+    ll outputs[N];
 
-    int size = 0;
-    for (int i = 0; i < N; i++)
-    {
-        int output, occurence;
-        cin >> occurence >> output;
-        size += occurence;
-
-        for (int j = 0; j < occurence; j++)
-        {
-            cows.push_back(output);
-        }
+    for (int i = 0; i < N; i++) {
+        ll num, production;
+        cin >> num >> production;
+        input.insert({production, num});
+        outputs[i] = production;
     }
 
-    sort(cows.begin(), cows.end());
+    sort(outputs, outputs + N);
+    for (int i = 0; i < N; i++) {
+        occurences[i] = input[outputs[i]];
+    }
+
+    int lower = 0;
+    int higher = N - 1;
 
     ll ans = 0;
-    for (int i = 0; i < size / 2; i++)
+    while (lower < higher)
     {
-        ans = max(ans, cows[i] + cows[size - 1 - i]);
-    }
+        int minOccur = min(occurences[lower], occurences[higher]);
+        ans = max(ans, outputs[lower] + outputs[higher]);
 
-    cout << ans;
+        occurences[lower] -= minOccur;
+        occurences[higher] -= minOccur;
+
+        if(occurences[lower] == 0) {
+            lower++;
+        } 
+        if(occurences[higher] == 0) {
+            higher--;
+        }
+    }
+    cout << max(ans, 2 * outputs[lower]);
 }
