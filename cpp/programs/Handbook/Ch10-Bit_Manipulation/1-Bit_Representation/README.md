@@ -1,6 +1,6 @@
 # Bit Representation
 
-Internally in your computer, numbers are stored as a binary number. Integers are binary numbers with `32` bits. For example, the number `43` would be `00000000000000000000000000101011`. For the bit representation of `-43` we would use **Two's complement**. This means that we will be inverting `0 => 1` and `1 => 0`. Thus, the binary representation of `-43` would be, `11111111111111111111111111010100`.
+Internally in your computer, numbers are stored as a binary number. Integers are binary numbers with `32` bits. For example, the number `43` would be `00000000000000000000000000101011`. For the bit representation of `-43` we would use **Two's complement**. This means that we will be inverting `0 => 1` and `1 => 0`, then increase the number by 1. Thus, the binary representation of `-43` would be, `11111111111111111111111111010101`.
 
 ## Unsigned vs Signed
 
