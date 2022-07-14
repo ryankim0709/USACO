@@ -35,3 +35,38 @@ The following graph is a **directed**. A directed graph is a graph in which edge
 ![Weighted Graph](../images/weighted.png)
 
 The above grpah is known as a **weighted** graph. A weighted graph in which each edge is given a specific weight. The **length** of a path on a weighted graph is the sum of the weights of the edges on the path. For example, the length of the path `0 -> 1 -> 2 -> 3` would be `4 + 8 + 7 = 19`.
+
+The **shortest** path from one node to another node is the path with the smallest length.
+
+## Neighbors and degrees
+
+Two nodes are **neighbors** if there is an edge between them. In the above graph, nodes `3` and `4` are neightbors. The degree of a node is the amount of neighbors the node has. For example, in the above graph, `1` has a degree of `3` because `2`, `0`, and `7` are neightbors of node `1`.
+
+The sum of the degrees of every node in a graph is **always** `2m` where `m` is the number of edges. This is because each node will each edge increases the degree of `2` nodes by `1`
+
+A **regular** graph is a graph such that each node has a degree of `d`. A **complete** graph is a graph in which each node has a degre of `n-1`. A complete graph is a graph in which every node is connected with every other node.
+
+In a directed graph, the **indegree** of a node is the number of edges that end at that node, and the **outdegree** is the number of edges that start from that node. In the image of the directed graph in the Edge Weight section, the indegree of `1` would be two because there are two edges coming into one, from `3` and from `0`, and the outdetree of `1` would also be two because there are two edges extending from node `1`.
+
+## Colorings
+
+![Bipartite Graph](../images/bipartite.png)
+
+A **coloring** of a grph will assign each node with a color such that _no adjacent nodes have the same color_.
+
+The graph above is known as a **bipartite** graph. A bipartite graph is a graph that can be **colored using two colors**. It turns out that a graph is bipartite if it does not contain a cycle with an _odd_ number of edges.
+
+## Simplicity
+
+A **simple** graph is a graph that
+
+- Have no edges start and end at the same node
+- Have no multiple edges between two nodes
+
+Not simple graph
+
+![Not simple](../images/notSimple.png)
+
+Simple graph
+
+![Simple graph](../images/graph.png)
