@@ -31,6 +31,7 @@ public:
         for (int i = 0; i < v; i++) {
             visited[i] = false;
         }
+        cout << typeid(visited).name();
         dfs(start, visited);
     }
 };
