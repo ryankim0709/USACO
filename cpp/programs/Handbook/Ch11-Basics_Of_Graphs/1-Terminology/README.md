@@ -14,7 +14,7 @@ A **cycle** is path in which the first and last node is the same. In the graph a
 
 A **connected** graph is a graph in which there is path between any two nodes. The graph shown **above** is connected.
 
-The following graph is a **disconnected graph** because there is no path drom `D -> E`, `A -> E`, etc.
+The following graph is a **disconnected graph** because there is no path from `D -> E`, `A -> E`, etc.
 
 ![Disconnected Graph](../images/disconnected.png)
 
