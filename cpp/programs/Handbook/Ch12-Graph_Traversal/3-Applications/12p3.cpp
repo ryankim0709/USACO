@@ -130,4 +130,6 @@ int main() {
     bipartitenes.addNeighbor(4, 2);
 
     cout << bipartitenes.isBipartite(n) << "\n";
+
+    return 0;
 }
