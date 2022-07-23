@@ -25,6 +25,28 @@ public:
                 dfs(u, s);
         }
     }
+
+    void dfsNodesBelow(int s, int e, int count[]) {
+        count[s] = 1;
+        for(auto u:adjList[s]) {
+            if(u == e) continue;
+            dfsNodesBelow(u, s, count);
+            count[s] += count[u];
+        }
+    }
+
+    void findNodesBelow(int s, int e) {
+        int *count = new int[N];
+        for (int i = 0; i < N; i++) {
+            count[i] = 0;
+        }
+
+        dfsNodesBelow(s, e, count);
+
+        for (int i = 0; i < N; i++) {
+            cout << "Node " << i << " has " << count[i] << " nodes underneath it and inlcluding itself.\n";
+        }
+    }
 };
 
 int main() {
@@ -34,4 +56,6 @@ int main() {
     tree.addConnection(2, 3);
 
     tree.dfs(0, 0);
+    cout << "\n";
+    tree.findNodesBelow(0, 0);
 }
