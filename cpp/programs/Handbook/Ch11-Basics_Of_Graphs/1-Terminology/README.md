@@ -63,7 +63,7 @@ A **simple** graph is a graph that
 - Have no edges start and end at the same node
 - Have no multiple edges between two nodes
 
-Not simple graph
+Not a simple graph
 
 ![Not simple](../images/notSimple.png)
 
