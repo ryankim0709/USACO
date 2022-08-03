@@ -31,7 +31,7 @@ public:
         }
     }
 
-    void construct(int arr[]) {
+    void construct(vector<int> arr) {
         for (int i = 0; i <= N; i++) {
             tree[i] = 0;
         }
@@ -49,8 +49,8 @@ public:
 };
 
 int main() {
-    BinIndTree test(8);
-    int arr[] = {1,3,4,8,6,1,4,2};
+    BinIndTree test(9);
+    vector<int> arr = {2,3,4,5,3,4,3,1,1};
     test.construct(arr);
     test.expressBinIndTree();
 }

@@ -1,4 +1,4 @@
-## Competitive Programming Handbook
+# Competitive Programming Handbook
 
-## Questions
-1. How do you pass in a 2-D array of any size into a function without specifying size?
+## Sections to review
+`9.2`, `9.3`, `9.4`, **Entired Ch18**
