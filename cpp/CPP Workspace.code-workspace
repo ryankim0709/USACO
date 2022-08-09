@@ -23,7 +23,9 @@
       "deque": "cpp",
       "list": "cpp",
       "string": "cpp",
-      "vector": "cpp"
+      "vector": "cpp",
+      "queue": "cpp",
+      "stack": "cpp"
     }
   }
 }
