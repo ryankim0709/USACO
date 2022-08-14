@@ -6,3 +6,6 @@ For Ford Fulkersons Algorithm, we must construct a special type of graph in whic
 In this example, we used **Edmonds-Karp algorithm** to find the possible paths. Edmonds-Karp is based on `BFS` instead of `DFS`. This is because we can find the *shortest* path from the source to the since. On the contrary, `DFS` may be more time consuming because it may zig-zag through the graph.
 
 Another way to implement Ford Fulkersons Algorithm is using the **scaling algorithm**. In this algorith, we use `DFS`, however we only traverse an edge if the number is at least certain threshold. Initially, the threshold would be the sum of all edge weights, however, if a path can not be found, the threshold would be divided by `2`.
+
+## Minimum Cuts
+The **minimum cuts** is a set of edges that when removed, will ensure there is no path from the source to sink. Conveniantely, Ford-Fulkerson's algorithm can help us find the minimum cuts. After finding the set of nodes that are reachable from the sink with `1` skip, called `A`. Then, we must find nodes from `A` that are outside of `A`, and reach full capacity during Ford Fulkerson's. The sum of the capacities of such edges is the minimum cut.
