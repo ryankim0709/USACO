@@ -8,3 +8,5 @@
 `20.1` Why minimum cuts = max flow
 
 `20.2` Code up Node-disjoint paths
+
+`26.4` Z-algorithm
