@@ -10,3 +10,5 @@
 `20.2` Code up Node-disjoint paths
 
 `26.4` Z-algorithm
+
+`21.1` Number of factors, sum of factors, product of factors
