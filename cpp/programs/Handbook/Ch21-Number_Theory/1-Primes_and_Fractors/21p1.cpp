@@ -26,6 +26,20 @@ vector<int> factors(int n) {
     return f;
 }
 
+void eratosthenes(int sieve[], int n) {
+    for (int x = 2; x < n; x++) {
+        if(sieve[x])
+            continue;
+        for (int i = x * 2; i < n; i += x)
+            sieve[i] = x;
+    }
+
+    for (int i = 0; i < n; i++) 
+        cout << sieve[i] << " ";
+    
+    cout << "\n";
+}
+
 int main() {
     cout << prime(4) << "\n";
     vector<int> f = factors(4);
@@ -34,4 +48,7 @@ int main() {
         cout << i << " ";
     }
     cout << "\n";
+
+    int sieve[21] = {0};
+    eratosthenes(sieve, sizeof(sieve)/sizeof(21));
 }

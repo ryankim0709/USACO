@@ -11,4 +11,4 @@
 
 `26.4` Z-algorithm
 
-`21.1` Number of factors, sum of factors, product of factors
+`21.1` Number of factors, sum of factors, product of factors, Euler's totient function
