@@ -25,4 +25,12 @@ int modpow(int x, int n, int m) {
 Fermat's theorem states that `x^(m-1) % m = 1` when `m` is prime and `x` and `m` are **coprime** (meaning both numbers are prime). This can then be extended to `x^k % m = x^(k % (m-1)) % m`. More generally, **Euler's Theorem** states that `x^p(m) % m = 1` where `p(m)` is **Eulers Totient function** which will return the number of numbers relatively prime to `m` which means that `gcd(m, x) = 1`.
 
 ## Modular inverse
-The inverse of `x % m` called `x^-1` is defined such that `(x * x^-1) % m = 1`.
+The inverse of `x % m` called `x^-1` is defined such that `(x * x^-1) % m = 1`. For example for `x = 6` and `m = 17`, `x^-1 = 3` because `(6 * 3) % 17 = 18 % 17 = 1`. Also, it has been determined that an inverse only exists when both `x` and `m` are coprime. If an inverse exists, then `x^-1 = x^(p(m) - 1)` and if `m` is prime, then `x^-1 = x^(m - 2)`. For example, `6^-1 % 17 = 16^(17 - 2) % 17 = 6^15 % 17 = 3`.
+
+## Computer arithmetic
+In programming, **`unsigned integers`** are integers that are represented modulo $2^k$ where `k` is the number of bits in the data type. For `C++`, there are $32$ bits in an integer, and as a result, `unsigned int x` will be represented by $x \% 2^{32}$. Due to this property, it is noteworthy, that unsigned integers will **never be negative** This can be seen in the following example,
+
+```cpp
+unsigned int x = 123456789;
+cout << x * x << "\n"; // Will return 237071545
+```
