@@ -5,29 +5,36 @@ using namespace std;
 int main() {
     freopen("div7.in", "r", stdin);
     freopen("div7.out", "w", stdout);
-
     int n;
     cin >> n;
 
-    // Contains first time prefix % 7 = i
-    vector<int> first_occur(7, -1); // All -1 and has size 7
-    first_occur[0] = 0;
+    int prefix[n + 1];
+    prefix[0] = 0;
 
-    int curr_remainder = 0;
+    for (int i = 1; i <= n; i++) {
+        int a;
+        cin >> a;
+        prefix[i] = prefix[i - 1] + a;
+    }
 
-    int ans = 0;
-    for (int i = 1; i <= n; i++)
+    int ans = -1;
+    for (int i = n; i >= 0; i--)
     {
-        int cow;
-        cin >> cow;
+        if(ans > -1)
+            break;
+        if (i == 0)
+            ans = 0;
 
-        curr_remainder = (curr_remainder + cow) % 7;
+        for (int a = 1; a <= n - i + 1; a++) {
+            int start = a;
+            int end = start + i - 1;
 
-        if(first_occur[curr_remainder] == -1) {
-            first_occur[curr_remainder] = i;
-        } else {
-            ans = max(ans, i - first_occur[curr_remainder]);
+            if((prefix[end] - prefix[start - 1]) % 7 == 0) {
+                ans = i;
+                break;
+            }
         }
     }
+
     cout << ans;
 }
