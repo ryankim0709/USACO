@@ -1,0 +1,36 @@
+ll max_profit = 0;
+    ll p_sale = 0; // Which sale
+    ll p_rent = 0; // Which rent
+    ll p_cow = 0; // Which cow
+
+    while(p_cow < N) {
+        ll milk_amt = cows[p_cow];
+        ll last_milk_sold = 0;
+        ll curr_profit = 0;
+        ll curr_shop = p_sale;
+
+        while(curr_shop < M) {
+            ll milk_to_sell = min(milk_amt, markets[curr_shop].second);
+            milk_amt -= milk_to_sell;
+            curr_profit += milk_to_sell * markets[curr_shop].first;
+
+            if(milk_amt == 0) {
+                last_milk_sold = milk_to_sell;
+                break;
+            } else {
+                curr_shop++;
+            }
+        }
+
+        if(p_rent == R or rents[p_rent] < curr_profit) {
+            max_profit += curr_profit;
+            markets[curr_shop].second -= last_milk_sold;
+            p_sale = curr_shop;
+            p_cow++;
+            
+        } else {
+            max_profit += rents[p_rent];
+            p_rent++;
+            N--;
+        }
+    }
